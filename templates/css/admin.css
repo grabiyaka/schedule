@@ -1,0 +1,8 @@
+h1, h2{
+    text-align: center;
+}
+.add{
+    text-align: center;
+    border: solid 1px;
+    padding: 10px;
+}
