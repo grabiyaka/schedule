@@ -10,19 +10,12 @@ class AdminController
     public function actionIndex()
     {
 
-        $db = new Db;
         $site = new Site;
-        $router = new Router;
-        
-        $db = $db->getConnection();
 
-        $linkSchedules = $router->stdToArray(json_decode($db->q("SELECT * FROM schedule")->json()));
-        $array = [];
-        foreach($linkSchedules as $item){
-            $array[] = $item['date'];
-        }
-        $linkSchedules = array_unique($array);
+        $schedules = $site->getLinks();
 
+        $lang = 'ru';
+        $days = include ROOT . '/config/days.php';
 
         require_once ROOT .  "/views/admin/index.php";
 
@@ -33,34 +26,24 @@ class AdminController
     public function actionSchedule($year, $mounth, $day)
     {
 
-        //Подключение дб
-        $db = new Db;
         $site = new Site;
-        $router = new Router;
         
-        $db = $db->getConnection();
-
-        $linkSchedules = $router->stdToArray(json_decode($db->q("SELECT * FROM schedule")->json()));
-        $array = [];
-        foreach($linkSchedules as $item){
-            $array[] = $item['date'];
-        }
-        $linkSchedules = array_unique($array);
-
-        $date = date('Y-m-d');
         $dateUri = date( "$year-$mounth-$day");
+        $thisWeek = $site->getWeek($dateUri);
 
-        $schedules = $router->stdToArray(json_decode($db->q(" SELECT * FROM schedule ")->json()));
+        //Достаём всё из бд
+        $schedules = $site->selectAllFrom('schedule');
+        $events = $site->selectAllFrom('events');
 
-        $schedules = $site->removeDuplicate($schedules, 'date');
+        $schedules = $site->getLinks();
+        
+        $current_schedules = $site->getAllEventsForWeek($thisWeek);
+        //Удаляем пустые массивы
+        $current_schedules = $site->deleteEmptyArrays($current_schedules);
 
-        $events = $router->stdToArray(json_decode($db->q(" SELECT * FROM events ")->json()));
-        $current_schedules = $router->stdToArray(json_decode($db->q(" SELECT * FROM schedule WHERE date = '$dateUri' ")->json()));
+        $array = $site->getCurrentWeek($current_schedules, $events);
 
-        $array = [];
         $lang = 'ru';
-        $lang = 'ru';
-
         $days = include ROOT . '/config/days.php';
 
         require_once ROOT .  "/views/admin/index.php";

@@ -5,10 +5,11 @@ use Illuminate\Console\Scheduling\Schedule;
  require ROOT . "/templates/layouts/header.html"; ?>
 
 <title>Schedule</title>
+<link rel="stylesheet" href="templates/css/site.css">
 
 <?php foreach($schedules as $schedule): ?>
 
-    <a href="<?php echo $schedule["date"]; ?>"><?php echo $schedule["date"]; ?></a>
+    <a href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
 
 <?php endforeach ?>
 <br> <br>
@@ -17,10 +18,10 @@ use Illuminate\Console\Scheduling\Schedule;
     <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
     <?php foreach($array as $items): ?>
-
-        <h2><?php echo $days[$items[0]['event']['day']][$lang] ?></h2>
+       
+        <h2><?php echo $days[date('w', strtotime($items['date']))][$lang]; ?></h2>
         <?php foreach($items as $item): ?>
-        <div class="">
+        <div class="event">
             <?php if(gettype($item) == 'array'): ?> 
             <h3>Пункт: <?php echo $item['event']['name']; ?></h3>
             <h3>Отвецтвенный: <?php echo $item['responsible']; ?></h3>

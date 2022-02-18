@@ -16,32 +16,31 @@
             </form>
         </div>
 
-        <?php if(isset($current_schedules)): ?>
+        <?php if(count($array)): ?>
 
-            <br> <br>
-            <?php if(count($current_schedules)): ?>
+<h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
-            <h1><?php echo $current_schedules[0]['date']; ?></h1>
-            <hr>
-            <?php foreach($current_schedules as $current_schedule): ?>
-
-                <h2><?php  echo $days[$events[$current_schedule['event_id'] - 1]['day']][$lang]; ?> <br></h2>
-                <h3><?php  echo $events[$current_schedule['event_id'] - 1]['time']; ?> <br></h3>
-
-                <div>
-                    <br>
-                    <?php echo $current_schedule['responsible']; ?>
-                    <br>
-                    <?php  echo $events[$current_schedule['event_id'] - 1]['name']; ?> <br>
-                    <hr>
-                </div>
-
-            <?php endforeach ?>
-
+<?php foreach($array as $items): ?>
+   
+    <h2><?php echo $days[date('w', strtotime($items['date']))][$lang]; ?></h2>
+    <?php foreach($items as $item): ?>
+    <div class="event">
+        <?php if(gettype($item) == 'array'): ?> 
+        <h3>Пункт: <?php echo $item['event']['name']; ?></h3>
+        <h3>Отвецтвенный: <?php echo $item['responsible']; ?></h3>
+        <h3>Время: <?php echo $item['event']['time']; ?></h3>
+        <br>
         <?php endif ?>
-        <?php endif ?>
+    </div>
+    <?php endforeach ?>
+    <hr>
+<?php endforeach ?>
 
-        <?php foreach($linkSchedules as $schedule): ?>
+        <?php else: ?>
+        PAGE NOT FOUND
+        <?php  endif ?>
+
+        <?php foreach($schedules as $schedule): ?>
 
             <a href="<?php echo 'admin/' . $schedule; ?>"><?php echo $schedule; ?></a>
 
