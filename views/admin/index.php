@@ -16,7 +16,7 @@
             </form>
         </div>
 
-        <?php if(count($array)): ?>
+<?php if(isset($array) && count($array)): ?>
 
 <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
@@ -36,8 +36,6 @@
     <hr>
 <?php endforeach ?>
 
-        <?php else: ?>
-        PAGE NOT FOUND
         <?php  endif ?>
 
         <?php foreach($schedules as $schedule): ?>

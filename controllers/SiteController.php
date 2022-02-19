@@ -7,6 +7,7 @@ class SiteController
 
     public function actionIndex($year, $mounth, $day)
     {
+    
         $site = new Site;
         
         $dateUri = date( "$year-$mounth-$day");

@@ -1,15 +1,20 @@
 <?php 
 
-use components\Db;
-use components\Router;
 use models\Site;
+use models\User;
 
 class AdminController
 {
 
+    public function __construct()
+    {
+        $this->user = new User;
+    }
+
     public function actionIndex()
     {
-
+        $this->user->checkUser();
+    
         $site = new Site;
 
         $schedules = $site->getLinks();
@@ -25,6 +30,8 @@ class AdminController
     
     public function actionSchedule($year, $mounth, $day)
     {
+
+        $this->user->checkUser();
 
         $site = new Site;
         

@@ -1,6 +1,7 @@
 <?php
 
 use components\Db;
+use models\User;
 
 class ApiController
 {
@@ -9,6 +10,8 @@ class ApiController
     {
         $db = new Db;
         $this->getConnection = $db->getConnection();
+
+        $this->user = new User;
     }
 
     public function actionGet_events()
