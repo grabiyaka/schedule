@@ -2,6 +2,8 @@
 
 use models\Site;
 use models\User;
+use models\Admin;
+use components\Db;
 
 class AdminController
 {
@@ -9,6 +11,8 @@ class AdminController
     public function __construct()
     {
         $this->user = new User;
+        $this->admin = new Admin;
+        $this->db = new Db;
     }
 
     public function actionIndex()
@@ -33,6 +37,16 @@ class AdminController
 
         $this->user->checkUser();
 
+        // if(isset($_POST['submit'])){
+        //     $responsible[] = $_POST['responsible'];
+        //     $id[] = $_POST['id'];
+        //     $event[] = $_POST['event'];
+
+        //     d($responsible);
+
+        //     //$this->admin->update($responsible, $event, $id);
+        // }
+
         $site = new Site;
         
         $dateUri = date( "$year-$mounth-$day");
@@ -49,6 +63,8 @@ class AdminController
         $current_schedules = $site->deleteEmptyArrays($current_schedules);
 
         $array = $site->getCurrentWeek($current_schedules, $events);
+
+        dd(json_encode($array));
 
         $lang = 'ru';
         $days = include ROOT . '/config/days.php';

@@ -2,23 +2,24 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 
- require ROOT . "/templates/layouts/header.html"; ?>
+ require ROOT . "/templates/layouts/header.php"; ?>
 
 <title>Schedule</title>
 <link rel="stylesheet" href="templates/css/site.css">
 
-<?php foreach($schedules as $schedule): ?>
+<div id="app">
+    <?php foreach($schedules as $schedule): ?>
 
     <a href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
 
-<?php endforeach ?>
-<br> <br>
-<?php if(count($array)): ?>
+    <?php endforeach ?>
+    <br> <br>
+    <?php if(count($array)): ?>
 
     <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
     <?php foreach($array as $items): ?>
-       
+    
         <h2><?php echo $days[date('w', strtotime($items['date']))][$lang]; ?></h2>
         <?php foreach($items as $item): ?>
         <div class="event">
@@ -33,9 +34,12 @@ use Illuminate\Console\Scheduling\Schedule;
         <hr>
     <?php endforeach ?>
 
-<?php else: ?>
-PAGE NOT FOUND
-<?php  endif ?>
+    <?php else: ?>
+    PAGE NOT FOUND
+    <?php  endif ?>
+</div>
 
+
+<script src="templates/js/index.js"></script>
 </body>
 </html>

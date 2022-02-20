@@ -2,6 +2,7 @@
 
 use components\Db;
 use models\User;
+use models\Site;
 
 class ApiController
 {
@@ -12,14 +13,35 @@ class ApiController
         $this->getConnection = $db->getConnection();
 
         $this->user = new User;
+        $this->pc = $db->postCheck();
+
+        $this->site = new Site;
     }
 
     public function actionGet_events()
     {
-
-        echo $this->getConnection->q("SELECT * FROM events")->json();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            echo $this->getConnection->q("SELECT * FROM events")->json();
+        } else{
+            header('Location: http://localhost/schedule');
+        }
 
         return true;
+    }
+    public function actionGet_schedule()
+    {
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            echo $this->getConnection->q("SELECT * FROM schedule")->json();
+        } else{
+            header('Location: http://localhost/schedule');
+        }
+    
+        return true;
+    }
+    public function actionGet_current_week()
+    {
+        echo $this->site->getCurrentWeek();
 
     }
 
@@ -36,12 +58,12 @@ class ApiController
 
     }
 
-    public function actionGet_schedule()
+    public function actionUpdate_schedule()
     {
 
-        echo $this->getConnection->q("SELECT * FROM schedule")->json();
+        $post = $this->pc;
 
-        return true;
+        d($post);
 
     }
     

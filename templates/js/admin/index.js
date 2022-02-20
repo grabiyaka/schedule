@@ -2,7 +2,6 @@ let app = new Vue({
     el: "#app",
     data: {
         date: false,
-        events: [],
         event: false
     },
 
@@ -11,15 +10,16 @@ let app = new Vue({
     },
 
     methods: {
-        getEvents(){
-            post("get_events", null, msg => {
-                //console.log(msg)
-                this.events = JSON.parse(msg)
-            })
+        updateShedule()
+        {
+            let fd = new FormData()
+            fd.append('')
+            
+            post("")
         }
     },
 
     beforeMount() {
-        this.getEvents()
+        
     }
 })

@@ -79,8 +79,6 @@ class UserController
             header("Login: http://localhost/schedule/");
         }
 
-        echo $_COOKIE['login'];
-
         require_once ROOT . '/views/user/sign_in.php';
 
         return true;
@@ -102,5 +100,14 @@ class UserController
         header("Location: http://localhost/schedule/");
 
     } 
+
+    public function actionCabinet()
+    {
+
+        require_once ROOT . '/views/user/cabinet.php';
+
+        return true;
+
+    }
 
 }

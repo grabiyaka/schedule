@@ -1,4 +1,4 @@
-<?php require_once ROOT . '/templates/layouts/header.html' ?>
+<?php require_once ROOT . '/templates/layouts/header.php' ?>
     <title>Sign up</title>
     <h1>Страница регистрации</h1>
     <form method="post">

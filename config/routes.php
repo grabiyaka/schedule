@@ -9,6 +9,9 @@ return [
         'add_shedule' => 'api/add_shedule',
     
         'get_schedule' => 'api/get_schedule',
+
+        'update_schedule' => 'api/update_schedule',
+
         ////////////////////////////////
 
     'admin/([0-9]+)-([0-9]+)-([0-9]+)' => 'admin/schedule/$1/$2/$3',
@@ -16,6 +19,7 @@ return [
 
     'user/autorisation' => 'user/autorisation',
     'user/registration' => 'user/registration',
+    'user/cabinet' => 'user/cabinet',
     'user/exit' => 'user/exit',
 
     '([0-9]+)-([0-9]+)-([0-9]+)' => 'site/index/$1/$2/$3',
