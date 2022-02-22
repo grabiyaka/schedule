@@ -10,6 +10,8 @@ return [
     
         'get_schedule' => 'api/get_schedule',
 
+        'get_current_week' => 'api/get_current_week',
+
         'update_schedule' => 'api/update_schedule',
 
         ////////////////////////////////

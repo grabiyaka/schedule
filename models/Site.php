@@ -8,6 +8,8 @@ use components\Router;
 class Site
 {
 
+    public $array;
+
     public function __construct()
     {
         $this->db = new Db;
@@ -65,8 +67,10 @@ class Site
             $items['date'] = $date;
            $array[] = $items; 
         }
+        $this->array = $array;
         return $array;
     }
+
 
     public function selectAllFrom($table)
     {

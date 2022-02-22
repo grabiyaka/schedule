@@ -3,7 +3,11 @@ let app = new Vue({
     data: {
         events: [],
         schedule: [],
-        currentWeek: []
+        currentWeek: [],
+
+        date: false,
+        event: false
+
     },
 
     computed: {
@@ -11,6 +15,7 @@ let app = new Vue({
     },
 
     methods: {
+        ///////GET
         getEvents(){
             post("get_events", null, msg => {
                 //console.log(msg)
@@ -22,8 +27,14 @@ let app = new Vue({
                 this.schedule = JSON.parse(msg)
             })
         },
-        updateShedule()
-        {
+        getCurrentWeek(){
+            post("get_current_week", null, msg => {
+                console.log(msg)
+                this.currentWeek = JSON.parse(msg)
+            })
+        },
+        
+        updateShedule(){
             let fd = new FormData()
             fd.append('')
             
@@ -34,5 +45,6 @@ let app = new Vue({
     beforeMount() {
         this.getSchedule()
         this.getEvents()
+        this.getCurrentWeek()
     }
 })

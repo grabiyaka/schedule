@@ -3,6 +3,9 @@
 
 <title>Admin Panel</title>
     <div id="app">
+
+        {{ currentWeek }}
+
         <h1>Admin Panel</h1>
         <div class="add">
             <h2>add schedule</h2>
@@ -16,13 +19,20 @@
             </form>
         </div>
 
-<?php if(isset($array) && count($array)): ?>
+        <?php if(isset($array) && count($array)): ?>
 
-<h1>Неделя от <?php echo $thisWeek[0] ?></h1>
+        <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
-<div>
-
-</div>
+        <div v-if="currentWeek">
+            <div v-for="items in currentWeek">
+                {{ items.date }}
+                <div v-for="item in items" >
+                    {{ item.responsible }}
+                    {{ item.event.id }}
+                </div>
+                <hr>
+            </div>
+        </div>
 
         <?php  endif ?>
 

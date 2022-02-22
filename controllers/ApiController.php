@@ -41,7 +41,10 @@ class ApiController
     }
     public function actionGet_current_week()
     {
-        echo $this->site->getCurrentWeek();
+        
+        echo json_encode($_SESSION['array']);
+
+        return true;
 
     }
 

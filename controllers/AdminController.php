@@ -13,6 +13,7 @@ class AdminController
         $this->user = new User;
         $this->admin = new Admin;
         $this->db = new Db;
+        $this->site = new Site;
     }
 
     public function actionIndex()
@@ -50,6 +51,7 @@ class AdminController
         $site = new Site;
         
         $dateUri = date( "$year-$mounth-$day");
+    
         $thisWeek = $site->getWeek($dateUri);
 
         //Достаём всё из бд
@@ -64,7 +66,7 @@ class AdminController
 
         $array = $site->getCurrentWeek($current_schedules, $events);
 
-        dd(json_encode($array));
+        $_SESSION['array'] = $array;
 
         $lang = 'ru';
         $days = include ROOT . '/config/days.php';

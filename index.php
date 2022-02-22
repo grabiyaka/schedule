@@ -34,6 +34,8 @@ function p($value)
     echo '<p>'. $value .'</p>';
 }
 
+session_start();
+
 $router = new Router;
 
 
