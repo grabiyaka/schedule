@@ -4,8 +4,6 @@
 <title>Admin Panel</title>
     <div id="app">
 
-        {{ currentWeek }}
-
         <h1>Admin Panel</h1>
         <div class="add">
             <h2>add schedule</h2>
@@ -21,19 +19,26 @@
 
         <?php if(isset($array) && count($array)): ?>
 
+            {{ array }}
+
         <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
         <div v-if="currentWeek">
             <div v-for="items in currentWeek">
                 {{ items.date }}
-                <div v-for="item in items" >
-                    {{ item.responsible }}
-                    {{ item.event.id }}
+                <div v-for="item in items" v-if="typeof(item) != 'string'" >
+                    <select name="event" id="">
+                        <option :value="item.event.id" name="event">{{ item.event.name }} {{ item.event.time }}</option>
+                        <option v-for="event in events" :value="event.id" name="event">{{ event.name }} {{ event.time }}</option>
+                    </select>
+                    {{ item.event.time }}
+                    <input type="text" :value="item.responsible" name="responsible" >
+                    <br>
                 </div>
                 <hr>
             </div>
         </div>
-
+            <button @click="updateShedule()" >Save</button>
         <?php  endif ?>
 
         <?php foreach($schedules as $schedule): ?>

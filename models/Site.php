@@ -8,7 +8,6 @@ use components\Router;
 class Site
 {
 
-    public $array;
 
     public function __construct()
     {
@@ -67,7 +66,6 @@ class Site
             $items['date'] = $date;
            $array[] = $items; 
         }
-        $this->array = $array;
         return $array;
     }
 

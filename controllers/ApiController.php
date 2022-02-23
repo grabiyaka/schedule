@@ -66,7 +66,7 @@ class ApiController
 
         $post = $this->pc;
 
-        d($post);
+        echo json_encode($post);
 
     }
     
