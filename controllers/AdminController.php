@@ -35,7 +35,7 @@ class AdminController
     
     public function actionSchedule($year, $mounth, $day)
     {
-
+        
         $this->user->checkUser();
 
         // if(isset($_POST['submit'])){
@@ -51,6 +51,8 @@ class AdminController
         $site = new Site;
         
         $dateUri = date( "$year-$mounth-$day");
+
+        $_SESSION['date'] = $dateUri;
     
         $thisWeek = $site->getWeek($dateUri);
 

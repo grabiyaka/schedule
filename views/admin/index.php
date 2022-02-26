@@ -19,26 +19,24 @@
 
         <?php if(isset($array) && count($array)): ?>
 
-            {{ array }}
-
         <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
 
         <div v-if="currentWeek">
             <div v-for="items in currentWeek">
                 {{ items.date }}
                 <div v-for="item in items" v-if="typeof(item) != 'string'" >
-                    <select name="event" id="">
+                    <select @change="updateShedule($event, item.id)" name="event_id" id="">
                         <option :value="item.event.id" name="event">{{ item.event.name }} {{ item.event.time }}</option>
-                        <option v-for="event in events" :value="event.id" name="event">{{ event.name }} {{ event.time }}</option>
+                        <option v-for="event in events" :value="event.id" :name="event.id">{{ event.name }} {{ event.time }}</option>
                     </select>
                     {{ item.event.time }}
-                    <input type="text" :value="item.responsible" name="responsible" >
+                    <input name="responsible" @keyup.stop="updateShedule($event, item.id)" type="text" :value="item.responsible" >
                     <br>
+                    <button @click="deleteSchedule(item.id)">DELETE</button>
                 </div>
                 <hr>
             </div>
         </div>
-            <button @click="updateShedule()" >Save</button>
         <?php  endif ?>
 
         <?php foreach($schedules as $schedule): ?>

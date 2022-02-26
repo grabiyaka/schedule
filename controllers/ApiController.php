@@ -41,8 +41,19 @@ class ApiController
     }
     public function actionGet_current_week()
     {
+
+        $site = $this->site;
+
+        $thisWeek = $site->getWeek($_SESSION['date']);
+
+        $current_schedules = $site->getAllEventsForWeek($thisWeek);
+        $current_schedules = $site->deleteEmptyArrays($current_schedules);
+        $events = $site->selectAllFrom('events');
+
+        $array = $site->getCurrentWeek($current_schedules, $events);
+
         
-        echo json_encode($_SESSION['array']);
+        echo json_encode($array);
 
         return true;
 
@@ -66,7 +77,24 @@ class ApiController
 
         $post = $this->pc;
 
-        echo json_encode($post);
+        //echo json_encode($post);
+
+        $this->getConnection->q("UPDATE schedule SET `".$post['name']."` = '".$post['value']."' WHERE `id` = '".$post['id']."' ");
+
+        return true;
+
+    }
+
+    public function actionDelete_schedule()
+    {
+       
+        $post = $this->pc;
+
+        $this->getConnection->q("DELETE FROM schedule WHERE `id` = '".$post['id']."' ");
+
+        echo $this->getConnection->q("SELECT * FROM schedule")->json();
+
+        return true;
 
     }
     

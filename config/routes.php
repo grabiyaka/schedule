@@ -14,6 +14,8 @@ return [
 
         'update_schedule' => 'api/update_schedule',
 
+        'delete_schedule' => 'api/delete_schedule',
+
         ////////////////////////////////
 
     'admin/([0-9]+)-([0-9]+)-([0-9]+)' => 'admin/schedule/$1/$2/$3',

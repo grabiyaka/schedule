@@ -5,8 +5,6 @@ let app = new Vue({
         schedule: [],
         currentWeek: [],
 
-        array: [],
-
         date: false,
         event: false
 
@@ -35,13 +33,23 @@ let app = new Vue({
             })
         },
 
-        updateShedule(){
+        updateShedule($event, id){
             let fd = new FormData()
-            fd.append('event', event)
-            fd.append('name', name)
+            fd.append("id", id)
+            fd.append("value", $event.target.value)
+            fd.append("name", $event.target.name)
             
-            post("update_shedule", fd, msg => {
-                this.array = JSON.parse(msg)
+            post("update_schedule", fd, msg => {
+                
+            })
+        },
+
+        deleteSchedule(id){
+            let fd = new FormData()
+            fd.append("id", id)
+
+            post("delete_schedule", fd, msg => {
+                this.getCurrentWeek()
             })
         }
     },

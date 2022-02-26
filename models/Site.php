@@ -58,7 +58,7 @@ class Site
         foreach($current_schedules as $key => $items){
             $date = $items[0]['date'];
             for($i = 0;$i <= count($items); $i++){
-                unset($items[$i]['date']);
+                unset($items[$i]['date']); 
             }
             foreach($items as $key => $item){
                 $items[$key]['event'] = $events[$item['event_id'] - 1];
