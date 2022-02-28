@@ -11,6 +11,9 @@ class SiteController
         $site = new Site;
         
         $dateUri = date( "$year-$mounth-$day");
+
+        $_SESSION['date'] = $dateUri;
+
         $thisWeek = $site->getWeek($dateUri);
 
         //Достаём всё из бд

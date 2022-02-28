@@ -9,3 +9,9 @@ function post(url, data, callback) {
       callback(xhr.response);
     };
 }
+
+function include(url) {
+  var script = document.createElement('script');
+  script.src = url;
+  document.getElementsByTagName('head')[0].appendChild(script);
+}
