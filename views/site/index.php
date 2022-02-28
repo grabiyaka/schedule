@@ -2,35 +2,31 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 
- require ROOT . "/templates/layouts/header.php"; ?>
+require ROOT . "/templates/layouts/header.php"; ?>
 
- <script> 
- function include(url) {
-  var script = document.createElement('script');
-  script.src = url;
-  document.getElementsByTagName('head')[0].appendChild(script);
-}
- include("http://localhost/schedule/templates/layouts/header.php") </script>
+
 
 <title>Schedule</title>
 <link rel="stylesheet" href="templates/css/site.css">
 
-<div id="app">
-    {{ currentWeek }}
+<div id="app" class="container">
+
+    <nav class="container">
     <?php foreach($schedules as $schedule): ?>
 
     <a href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
 
     <?php endforeach ?>
+    </nav>
     <br> <br>
-    <?php if(count($array)): ?>
+    
+    <div v-if="currentWeek.length">
 
-    <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
-
-    <div v-if="currentWeek">
-            <div v-for="items in currentWeek">
-                {{ items.date }}
-                <div v-for="item in items" v-if="typeof(item) != 'string'" >
+        <div v-if="currentWeek">
+        <h1>Неделя от <?php echo $thisWeek[0] ?></h1>
+            <div v-for="items in currentWeek" >
+                <h3>{{ items.date }}</h3>
+                <div v-for="item in items" v-if="typeof(item) != 'string'" class="" >
                     <h3> Пункт и время: {{ item.event.name }} {{ item.event.time }}</h3>
                     <h3>Отвецтвенный: {{ item.responsible }}</h3>
                     <br>
@@ -38,15 +34,14 @@ use Illuminate\Console\Scheduling\Schedule;
                 <hr>
             </div>
         </div>
-        
-
-   
-    <?php else: ?>
-    PAGE NOT FOUND
-    <?php  endif ?>
+    </div>   
+    <div v-else>
+        PAGE NOT FOUND
+    </div>
 </div>
 
 
 <script src="templates/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

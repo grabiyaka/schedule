@@ -45,12 +45,15 @@ let app = new Vue({
         },
 
         deleteSchedule(id){
-            let fd = new FormData()
-            fd.append("id", id)
+            if(confirm("Вы дествительно хотите удалить запись?")){
+                let fd = new FormData()
+                fd.append("id", id)
 
-            post("delete_schedule", fd, msg => {
-                this.getCurrentWeek()
-            })
+                post("delete_schedule", fd, msg => {
+                    this.getCurrentWeek()
+                })
+            }
+            
         }
     },
 
