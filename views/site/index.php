@@ -1,8 +1,4 @@
-<?php
-
-use Illuminate\Console\Scheduling\Schedule;
-
-require ROOT . "/templates/layouts/header.php"; ?>
+<?php require ROOT . "/templates/layouts/header.php"; ?>
 
 
 
@@ -28,7 +24,7 @@ require ROOT . "/templates/layouts/header.php"; ?>
                 <h3>{{ items.date }}</h3>
                 <div v-for="item in items" v-if="typeof(item) != 'string'" class="" >
                     <h3> Пункт и время: {{ item.event.name }} {{ item.event.time }}</h3>
-                    <h3>Отвецтвенный: {{ item.responsible }}</h3>
+                    <h3>Ответственный: {{ item.responsible }}</h3>
                     <br>
                 </div>
                 <hr>

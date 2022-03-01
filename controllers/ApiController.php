@@ -23,7 +23,7 @@ class ApiController
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo $this->getConnection->q("SELECT * FROM events")->json();
         } else{
-            header('Location: http://localhost/schedule');
+            header('Location: '.HREF);
         }
 
         return true;
@@ -34,7 +34,7 @@ class ApiController
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo $this->getConnection->q("SELECT * FROM schedule")->json();
         } else{
-            header('Location: http://localhost/schedule');
+            header('Location: '.HREF);
         }
     
         return true;
@@ -66,7 +66,7 @@ class ApiController
         $date = $_POST['date'];
         $event = $_POST['event'];
         $this->getConnection->q("INSERT INTO `schedule` (`responsible`, `date`, `event_id`) VALUES ('$responsible', '$date', '$event') ");
-        header("Location: http://localhost/schedule/admin");
+        header("Location: ".HREF."admin");
 
         return true;
 
