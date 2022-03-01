@@ -7,6 +7,11 @@ use components\Router;
 use components\Db;
 
 define('ROOT', dirname(__FILE__));
+$root = explode("\\", ROOT);
+$baseHfer = "http://" . $_SERVER['SERVER_NAME'] . '/' . end($root) . '/';
+
+define('HREF', $baseHfer);
+
 
 spl_autoload_register(function ($class) {
     $path = str_replace('\\', '/', $class .'.php');

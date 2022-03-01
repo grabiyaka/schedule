@@ -35,7 +35,7 @@ class UserController
         }
 
         if(isset($_COOKIE['login'])){
-            header("Login: http://localhost/schedule/");
+            header("Location: ".HREF);
         }
 
         require_once ROOT . '/views/user/sign_up.php';
@@ -71,12 +71,12 @@ class UserController
             if(!count($errors)){
                 setcookie("login", $login, time() + 3600 * 3600, '/');
                 setcookie("pass", $pass, time() + 3600 * 3600, '/');
-                header('Location: http://localhost/schedule/');
+                header("Location: ".HREF);
             }
         }
 
         if(isset($_COOKIE['login'])){
-            header("Login: http://localhost/schedule/");
+            header("Location: ".HREF);
         }
 
         require_once ROOT . '/views/user/sign_in.php';
@@ -97,7 +97,7 @@ class UserController
             setcookie('pass', null, -1, '/'); 
         } 
 
-        header("Location: http://localhost/schedule/");
+        header("Location: ".HREF);
 
     } 
 

@@ -43,7 +43,7 @@ class SiteController
     {
 
         $date = date('Y-m-d');
-        header("Location: http://localhost/schedule/$date");
+        header("Location: ".HREF."$date");
 
         return true;
 
