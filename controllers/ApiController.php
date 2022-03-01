@@ -97,5 +97,12 @@ class ApiController
         return true;
 
     }
+
+    public function actionGetDays()
+    {
+        $days = include('config/days.php');
+        echo json_encode($days);
+        return true;
+    }
     
 }

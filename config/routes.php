@@ -16,6 +16,8 @@ return [
 
         'delete_schedule' => 'api/delete_schedule',
 
+        'getDays' => 'api/getDays',
+
         ////////////////////////////////
 
     'admin/([0-9]+)-([0-9]+)-([0-9]+)' => 'admin/schedule/$1/$2/$3',

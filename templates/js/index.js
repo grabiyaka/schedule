@@ -5,6 +5,8 @@ let app = new Vue({
         schedule: [],
         currentWeek: [],
 
+        days: [],
+
         date: false,
         event: false
 
@@ -15,37 +17,34 @@ let app = new Vue({
     },
 
     methods: {
-        ///////GET
-        getEvents(){
+        getEvents() {
             post("get_events", null, msg => {
                 //console.log(msg)
                 this.events = JSON.parse(msg)
             })
         },
-        getSchedule(){
+        getSchedule() {
             post("get_schedule", null, msg => {
                 this.schedule = JSON.parse(msg)
             })
         },
-        getCurrentWeek(){
+        getCurrentWeek() {
             post("get_current_week", null, msg => {
                 this.currentWeek = JSON.parse(msg)
             })
         },
-
-        updateShedule($event, id){
+        updateShedule($event, id) {
             let fd = new FormData()
             fd.append("id", id)
             fd.append("value", $event.target.value)
             fd.append("name", $event.target.name)
-            
+
             post("update_schedule", fd, msg => {
-                
+
             })
         },
-
-        deleteSchedule(id){
-            if(confirm("Вы дествительно хотите удалить запись?")){
+        deleteSchedule(id) {
+            if (confirm("Вы дествительно хотите удалить запись?")) {
                 let fd = new FormData()
                 fd.append("id", id)
 
@@ -53,13 +52,20 @@ let app = new Vue({
                     this.getCurrentWeek()
                 })
             }
-            
+
+        },
+        getDays(){
+            post("getDays", null, msg => {
+                this.days = JSON.parse(msg)
+            })
         }
+
     },
 
     beforeMount() {
         this.getSchedule()
         this.getEvents()
         this.getCurrentWeek()
+        this.getDays()
     }
 })

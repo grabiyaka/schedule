@@ -18,9 +18,8 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark container">
-        <a class="navbar-brand" href="">Navbar</a>
+        <a class="navbar-brand" href="">Schedule</a>
         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="navbar-toggler" type="button" data-toggle="collapse" >
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,7 +61,7 @@
         <div class="modal-dialog">
             <div class="modal-content navbar-dark bg-dark container">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">NavBar</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Schedule</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
