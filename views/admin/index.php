@@ -3,7 +3,6 @@
 
 <title>Admin Panel</title>
     <div id="app">
-
         <h1>Admin Panel</h1>
         <div class="add">
             <h2>add schedule</h2>

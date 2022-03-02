@@ -38,14 +38,14 @@ class Site
     {
         $date = strtotime($dateUri);
         if(date('w', $date) == 1){
-            $date = strtotime("monday $dateUri");
+            $date = strtotime("$dateUri");
         } else{
             $date = strtotime("last monday $dateUri");
         }
        
         //$date = $dateUri;
         $array = [];
-        for($i = 1;$i < 7;$i++) {
+        for($i = 0;$i < 7;$i++) {
             $array[] = date("Y-m-d", $date); 
             $date = strtotime('+1 day', $date);
         } return $array;

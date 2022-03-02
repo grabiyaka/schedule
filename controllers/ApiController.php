@@ -52,8 +52,9 @@ class ApiController
 
         $array = $site->getCurrentWeek($current_schedules, $events);
 
-        
         echo json_encode($array);
+
+        //echo json_encode($_SESSION['array']);
 
         return true;
 

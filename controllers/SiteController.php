@@ -14,6 +14,8 @@ class SiteController
 
         $_SESSION['date'] = $dateUri;
 
+        echo($_SESSION['date']);
+
         $thisWeek = $site->getWeek($dateUri);
 
         //Достаём всё из бд
@@ -29,6 +31,8 @@ class SiteController
         $current_schedules = $site->deleteEmptyArrays($current_schedules);
 
         $array = $site->getCurrentWeek($current_schedules, $events);
+
+        $_SESSION['array'] = $array;
 
         $lang = 'ru';
         $days = include ROOT . '/config/days.php';

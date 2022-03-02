@@ -39,7 +39,7 @@
             <?php if (isset($_COOKIE['login'])) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="user/exit">Выйти</a>
-                </li>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="admin">Admin Panel</a>
                 </li>

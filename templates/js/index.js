@@ -30,6 +30,7 @@ let app = new Vue({
         },
         getCurrentWeek() {
             post("get_current_week", null, msg => {
+                console.log(msg)
                 this.currentWeek = JSON.parse(msg)
             })
         },

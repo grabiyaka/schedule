@@ -6,8 +6,7 @@
 <link rel="stylesheet" href="templates/css/site.css">
 
 <div id="app" class="container">
-    <br> <br>
-
+    <br>
     <?php foreach ($schedules as $schedule) : ?>
         <a aria-disabled="false" href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
 
@@ -17,9 +16,9 @@
         <div v-if="currentWeek">
             <h1 class="bg-dark text-white p-1 rounded">Неделя от <?php echo $thisWeek[0] ?></h1>
             <div v-for="items in currentWeek">
-                <h3>{{ days[new Date(items.date).getDay() - 1].ru }} </h3>
+                <h3>{{ days[new Date(items.date).getDay()] }} </h3>
                 <div v-for="item in items" v-if="typeof(item) != 'string'" class="">
-                    <h3>{{ item.event.name }}: {{ item.event.time.substr(0, 5) }} - {{ item.responsible }}</h3>
+                    <h3>{{ item.event.time.substr(0, 5) }}: {{ item.event.name }} - {{ item.responsible }}</h3>
                 </div>
                 <hr>
             </div>
