@@ -16,6 +16,8 @@ class SiteController
 
         $thisWeek = $site->getWeek($dateUri);
 
+        $_SESSION['thisWeek'] = $thisWeek;
+
         //Достаём всё из бд
         $schedules = $site->selectAllFrom('schedule');
         $events = $site->selectAllFrom('events');

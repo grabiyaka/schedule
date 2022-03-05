@@ -8,9 +8,9 @@
 <div id="app" class="container">
     <br>
     <?php foreach ($schedules as $schedule) : ?>
-        <a aria-disabled="false" href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
-
+        <a v-bind:class="{ selected: <?php echo $thisWeek[0] ?> == <?php echo $schedule; ?> }" aria-disabled="false" href="<?php echo $schedule; ?>"><?php echo $schedule; ?></a>
     <?php endforeach ?>
+    
     <div v-if="currentWeek.length">
 
         <div v-if="currentWeek">

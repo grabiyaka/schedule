@@ -17,6 +17,7 @@ return [
         'delete_schedule' => 'api/delete_schedule',
 
         'getDays' => 'api/getDays',
+        
 
         ////////////////////////////////
 
