@@ -14,8 +14,6 @@ class SiteController
 
         $_SESSION['date'] = $dateUri;
 
-        echo($_SESSION['date']);
-
         $thisWeek = $site->getWeek($dateUri);
 
         //Достаём всё из бд

@@ -31,7 +31,12 @@ let app = new Vue({
         getCurrentWeek() {
             post("get_current_week", null, msg => {
                 console.log(msg)
-                this.currentWeek = JSON.parse(msg)
+                let array = []
+                array = JSON.parse(msg)
+                this.currentWeek = array
+                //this.currentWeek = array.sort(function(a,b){
+                //    return new Date(b.date) - new Date(a.date);
+                //  });
             })
         },
         updateShedule($event, id) {
