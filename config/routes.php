@@ -2,6 +2,8 @@
 
 return [
 
+    'getAllMigrations' => 'migrations/getAllMigrations',
+
         /////////////////////////////////POST
 
         'get_events' => 'api/get_events',

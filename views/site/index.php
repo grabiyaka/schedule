@@ -1,7 +1,5 @@
 <?php require ROOT . "/templates/layouts/header.php"; ?>
 
-
-
 <title>Schedule</title>
 <link rel="stylesheet" href="templates/css/site.css">
 
@@ -18,6 +16,7 @@
             <div v-for="items in currentWeek">
                 <h3>{{ days[new Date(items.date).getDay()] }} </h3>
                 <div v-for="item in items" v-if="typeof(item) != 'string'" class="">
+                {{ item.event.time }}
                     <h3>{{ item.event.time.substr(0, 5) }}: {{ item.event.name }} - {{ item.responsible }}</h3>
                 </div>
                 <hr>

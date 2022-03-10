@@ -33,10 +33,10 @@ let app = new Vue({
                 console.log(msg)
                 let array = []
                 array = JSON.parse(msg)
-                this.currentWeek = array
-                //this.currentWeek = array.sort(function(a,b){
-                //    return new Date(b.date) - new Date(a.date);
-                //  });
+                //this.currentWeek = array
+                this.currentWeek = array.sort(function(a,b){
+                   return new Date(a.date) - new Date(b.date);
+                });
             })
         },
         updateShedule($event, id) {
@@ -64,8 +64,9 @@ let app = new Vue({
             post("getDays", null, msg => {
                 this.days = JSON.parse(msg)
             })
-        }
+        },
 
+       
     },
 
     beforeMount() {

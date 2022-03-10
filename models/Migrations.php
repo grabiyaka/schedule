@@ -9,7 +9,8 @@ class Migrations
 
     public function __construct()
     {
-        $this->db = new Db;
+        $db = new Db;
+        $this->db = $db->getConnection();
     }
 
     public function createEvents()
